@@ -6,4 +6,18 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-graphcast-sdk = "0.6.0"
+prost = "0.11"
+ethers = "2.0.4"
+ethers-contract = "2.0.4"
+ethers-core = "2.0.4"
+ethers-derive-eip712 = "1.0.2"
+serde = { version = "1.0.163", features = ["rc"] }
+serde_json = "1.0.96"
+async-graphql = "4.0.16"
+thiserror = "1.0.40"
+anyhow = "1.0.71"
+reqwest = { version = "0.11.17", features = ["json"] }
+prometheus-http-query = "0.6.6"
+waku = { version = "=0.4.0", package = "waku-bindings" }
+url = "2.3.1"
+chrono = "0.4"
