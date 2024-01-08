@@ -382,12 +382,6 @@ dependencies = [
 
 [[package]]
 name = "bs58"
-version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "771fe0050b883fcc3ea2359b1a96bcfbc090b7116eae7c3c512c7a083fdf23d3"
-
-[[package]]
-name = "bs58"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f5353f36341f7451062466f0b755b96ac3a9547e4d7f6b70d603fc721a7d7896"
@@ -556,7 +550,7 @@ version = "0.8.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3b6be4a5df2098cd811f3194f64ddb96c267606bffd9689ac7b0160097b01ad3"
 dependencies = [
- "bs58 0.5.0",
+ "bs58",
  "coins-core",
  "digest",
  "hmac",
@@ -590,7 +584,7 @@ checksum = "5286a0843c21f8367f7be734f89df9b822e0321d8bcce8d6e735aadff7d74979"
 dependencies = [
  "base64 0.21.5",
  "bech32",
- "bs58 0.5.0",
+ "bs58",
  "digest",
  "generic-array",
  "hex",
@@ -992,7 +986,6 @@ dependencies = [
  "ff 0.12.1",
  "generic-array",
  "group 0.12.1",
- "pkcs8 0.9.0",
  "rand_core",
  "sec1 0.3.0",
  "subtle",
@@ -1038,26 +1031,6 @@ dependencies = [
 
 [[package]]
 name = "enr"
-version = "0.7.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "492a7e5fc2504d5fdce8e124d3e263b244a68b283cac67a69eda0cd43e0aebad"
-dependencies = [
- "base64 0.13.1",
- "bs58 0.4.0",
- "bytes",
- "hex",
- "k256 0.11.6",
- "log",
- "rand",
- "rlp",
- "secp256k1 0.24.3",
- "serde",
- "sha3",
- "zeroize",
-]
-
-[[package]]
-name = "enr"
 version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fe81b5c06ecfdbc71dd845216f225f53b62a10cb8a16c946836a3467f701d05b"
@@ -1069,6 +1042,25 @@ dependencies = [
  "log",
  "rand",
  "rlp",
+ "serde",
+ "sha3",
+ "zeroize",
+]
+
+[[package]]
+name = "enr"
+version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2a3d8dc56e02f954cac8eb489772c552c473346fc34f67412bb6244fd647f7e4"
+dependencies = [
+ "base64 0.21.5",
+ "bytes",
+ "hex",
+ "k256 0.13.2",
+ "log",
+ "rand",
+ "rlp",
+ "secp256k1 0.27.0",
  "serde",
  "sha3",
  "zeroize",
@@ -3456,31 +3448,22 @@ dependencies = [
 
 [[package]]
 name = "secp256k1"
-version = "0.24.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6b1629c9c557ef9b293568b338dddfc8208c98a18c59d722a9d53f859d9c9b62"
-dependencies = [
- "secp256k1-sys 0.6.1",
-]
-
-[[package]]
-name = "secp256k1"
 version = "0.26.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4124a35fe33ae14259c490fd70fa199a32b9ce9502f2ee6bc4f81ec06fa65894"
 dependencies = [
  "rand",
- "secp256k1-sys 0.8.1",
+ "secp256k1-sys",
  "serde",
 ]
 
 [[package]]
-name = "secp256k1-sys"
-version = "0.6.1"
+name = "secp256k1"
+version = "0.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "83080e2c2fc1006e625be82e5d1eb6a43b7fd9578b617fcc55814daf286bba4b"
+checksum = "25996b82292a7a57ed3508f052cfff8640d38d32018784acd714758b43da9c8f"
 dependencies = [
- "cc",
+ "secp256k1-sys",
 ]
 
 [[package]]
@@ -4369,12 +4352,11 @@ checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
 [[package]]
 name = "waku-bindings"
 version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cf6036855623c52f947553917730b84e6cb0e950f2028cc0989ea07b609abb1b"
+source = "git+https://github.com/axiomatic-aardvark/waku-rust-bindings#8214b5922867a8dd69c03d4e5d4c3b3b65e942e6"
 dependencies = [
  "aes-gcm",
  "base64 0.21.5",
- "enr 0.7.0",
+ "enr 0.10.0",
  "hex",
  "libc",
  "multiaddr",
@@ -4393,8 +4375,7 @@ dependencies = [
 [[package]]
 name = "waku-sys"
 version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c1c56eab81b128273c7a27fcbae536e66058a1ab8f3ebde9776b2bc25ca17877"
+source = "git+https://github.com/axiomatic-aardvark/waku-rust-bindings#8214b5922867a8dd69c03d4e5d4c3b3b65e942e6"
 dependencies = [
  "bindgen",
 ]
