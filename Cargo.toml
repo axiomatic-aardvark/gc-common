@@ -1,7 +1,8 @@
 [package]
-name = "graphcast-common"
+name = "graphcast_common"
 version = "0.1.0"
 edition = "2021"
+path = "src/lib.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
