@@ -295,8 +295,3 @@ impl<T: RadioPayload> GraphcastMessage<T> {
         })
     }
 }
-
-
-pub fn main() {
-
-}
