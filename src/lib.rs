@@ -13,7 +13,6 @@ use ethers::signers::{Signer, Wallet};
 
 use ethers_contract::EthAbiType;
 use async_graphql::SimpleObject;
-use waku::{WakuNodeHandle, Running, WakuPubSubTopic, WakuContentTopic, WakuMessage};
 use url::ParseError;
 
 
@@ -215,36 +214,6 @@ impl<T: RadioPayload> GraphcastMessage<T> {
             .map_err(|_| MessageError::Signing)?;
 
         GraphcastMessage::new(identifier, nonce, graph_account, payload, sig.to_string())
-    }
-
-    /// Send Graphcast message to the Waku relay network
-    pub fn send_to_waku(
-        &self,
-        node_handle: &WakuNodeHandle<Running>,
-        pubsub_topic: WakuPubSubTopic,
-        content_topic: WakuContentTopic,
-    ) -> Result<String, WakuHandlingError> {
-        let mut buff = Vec::new();
-        Message::encode(self, &mut buff).expect("Could not encode :(");
-
-        let waku_message = WakuMessage::new(
-            buff,
-            content_topic,
-            2,
-            Utc::now().timestamp() as usize,
-            vec![],
-            true,
-        );
-        println!( "Sending message");
-
-        node_handle
-            .relay_publish_message(&waku_message, Some(pubsub_topic.clone()), None)
-            .map_err(|e| {
-                println!(
-                    "Failed to relay publish the message"
-                );
-                WakuHandlingError::PublishMessage(e)
-            })
     }
 
     /// Recover sender address from Graphcast message radio payload

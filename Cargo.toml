@@ -19,7 +19,6 @@ thiserror = "1.0.40"
 anyhow = "1.0.71"
 reqwest = { version = "0.11.17", features = ["json"] }
 prometheus-http-query = "0.6.6"
-waku = { git = "https://github.com/axiomatic-aardvark/waku-rust-bindings", package = "waku-bindings" }
 url = "2.3.1"
 chrono = "0.4"
 
